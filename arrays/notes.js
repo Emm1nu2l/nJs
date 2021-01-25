@@ -30,7 +30,10 @@ notes.splice(1, 1)
 // notes.splice(1, 2, 'New Discovery', 'New Discovery') //Multiple replacement
 // console.log(notes) 
 notes.splice(1, 0, 'Nigeria will be a great nation')
-notes[2] = 'Nelson Mandela was a great ruler'
+notes[2] = {
+    title: 'Things to pay attention to',
+    body: 'Mental Transformation in all areas'
+}
 
 //Looping over Array,
 
@@ -114,14 +117,35 @@ console.log(notes.length)
 //How to search through an array.
 //this is done using indexOf method which eventually returns the index number if it exist or -1 if it doesn't exist,
 //it is case sensitive
+//It can be used to find an item you are not sure of; either to delete it or do some other action
 
 console.log(notes.indexOf('Nigeria will be a great nation'))
 
+//Now everything we've been doing is of an array of strings but let's see how changing to an array of 
+//objects will affects the behaviours and everything we've been doing since
 //When we're comparing two objects it does not matter if they have the same
 //set of object properties and the same object property values. It does not make 
-//them equal, what makes two objects equal is if they're exact same object in memory.
+//them equal, what makes two objects equal is if they're exact same object in memory. like this
 
-let someObject = {}
-let otherObject = someObject
-console.log(otherObject === someObject)
+// let someObject = {}
+// let otherObject = someObject
+// console.log(someObject === otherObject)
 
+// //but this is not equal
+// let object1 = {}
+// let object2 = {}
+// console.log(object1 === object2)
+
+//hence for array of objects, we are going to use 'findIndex' method instead of 'indexOf', because of 
+//flexibility, this findIndex method is related to forEach method which means it is a callback function
+//and its operation will be demonstrated below
+
+const index = notes.findIndex(function (note, index) {
+    console.log(note)
+    return note.title === 'Things to pay attention to'
+})
+console.log(index)
+
+//The goal of findIndex is to actually find the index and unlike forEach 
+//it has a meaningful return value
+//Note: with findIndex, we return either true or false
