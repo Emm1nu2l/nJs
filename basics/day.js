@@ -13,10 +13,14 @@ console.log(`${day}`)
 //     title: 'Self Development',
 //     body: 'be specific on the areas you wanna focus in, that is your area of specialisation'
 // }]
-// console.log(notes)
+// // console.log(notes)
 
-// notes.splice(1, 0, 'What a method to behold')
-// // notes.splice(1, 0, 'Nigeria will be a great nation')
+// notes.splice(1, 0, {
+//     title: 'Things to pay attention to',
+//     body: 'Mental Transformation in all areas'
+// })
+// console.log(notes)
+// notes.splice(1, 0, 'Nigeria will be a great nation')
 
 // console.log(notes)
 // notes[2] = {
@@ -32,3 +36,11 @@ console.log(`${day}`)
 // })
 // console.log(index)
 // console.log(notes.length)
+
+
+// const array1 = [5, 12, 8, 130, 44];
+
+// const isLargeNumber = (element) => element > 13;
+
+// console.log(array1.findIndex(isLargeNumber));
+// // expected output: 3

@@ -11,7 +11,7 @@ const notes = [{
     title: 'Self Development',
     body: 'be specific on the areas you wanna focus in, that is your area of specialisation'
 }]
-console.log(notes)
+// console.log(notes)
 // console.log(notes.length)
 // console.log(notes[notes.length - 0])
 // let reveal = notes.pop() //pop method is used to remove one item from the array list from the end
@@ -26,14 +26,13 @@ console.log(notes)
 // should start from, while the second says in quantity how many items to remove.
 // but to add, you use 3 arguments, the second should be in 0 to do nothing and the third
 // should contain what you want to add to the list.
-notes.splice(1, 1) 
-// notes.splice(1, 2, 'New Discovery', 'New Discovery') //Multiple replacement
-// console.log(notes) 
-notes.splice(1, 0, 'Nigeria will be a great nation')
-notes[2] = {
+// notes.splice(1, 1) 
+// // notes.splice(1, 2, 'New Discovery', 'New Discovery') //Multiple replacement
+// // console.log(notes) 
+notes.splice(1, 0, {
     title: 'Things to pay attention to',
     body: 'Mental Transformation in all areas'
-}
+})
 
 //Looping over Array,
 
@@ -75,10 +74,10 @@ notes[2] = {
 //also this grants us access into every item in the array as well as their respective index
 //and this is one of the most commonly used array
 
-notes.forEach(function (item, index) {
-    console.log(index)
-    console.log(item)
-})
+// notes.forEach(function (item, index) {
+//     console.log(index)
+//     console.log(item)
+// })
 
 //another one we can use is the For loop, the diff is forEach requires array data
 //but for loop doesn't, it is so flexible to mess with
@@ -90,26 +89,26 @@ notes.forEach(function (item, index) {
 //first, the intializer, second, the condition and third, the final expression. These are specified in the bracket and seperated using the semi-colon(;)
 // 
 
-//Counting....1
-for (let count = 0; count <= 2; count++) {
-    console.log(count)
-}
+// //Counting....1
+// for (let count = 0; count <= 2; count++) {
+//     console.log(count)
+// }
 
-//To do something for each item in the array
-for (let count = 0; count < notes.length; count++) {
-    console.log(count)
-    console.log(notes[count])
-}
-//when we use the for loop, the count becomes the index and then we use
-//the bracket notation to grab the item by its index from the array.
+// //To do something for each item in the array
+// for (let count = 0; count < notes.length; count++) {
+//     console.log(count)
+//     console.log(notes[count])
+// }
+// //when we use the for loop, the count becomes the index and then we use
+// //the bracket notation to grab the item by its index from the array.
 
-//To do this in reverse
-for (let count = notes.length - 1; count >= 0; count--) {
-    console.log(count)
-    console.log(notes[count])
-}
+// //To do this in reverse
+// for (let count = notes.length - 1; count >= 0; count--) {
+//     console.log(count)
+//     console.log(notes[count])
+// }
 
-console.log(notes.length)
+// console.log(notes.length)
 
 //Since we are dealing with array data then it's preferably to use forEach as for loop is used when
 //there is no array data
@@ -119,7 +118,7 @@ console.log(notes.length)
 //it is case sensitive
 //It can be used to find an item you are not sure of; either to delete it or do some other action
 
-console.log(notes.indexOf('Nigeria will be a great nation'))
+// console.log(notes.indexOf('Nigeria will be a great nation'))
 
 //Now everything we've been doing is of an array of strings but let's see how changing to an array of 
 //objects will affects the behaviours and everything we've been doing since
@@ -140,12 +139,22 @@ console.log(notes.indexOf('Nigeria will be a great nation'))
 //flexibility, this findIndex method is related to forEach method which means it is a callback function
 //and its operation will be demonstrated below
 
-const index = notes.findIndex(function (note, index) {
-    console.log(note)
-    return note.title === 'Things to pay attention to'
-})
-console.log(index)
+// const index = notes.findIndex(function (note, index) {
+//     console.log(note)                                    //These code is not reusable
+//     return note.title === 'Things to pay attention to'
+// })
+// console.log(index)
 
 //The goal of findIndex is to actually find the index and unlike forEach 
 //it has a meaningful return value
-//Note: with findIndex, we return either true or false
+//Note: with findIndex, we return either true or false\
+
+const findNote = function (notes, noteTitle) {
+    const index = notes.findIndex(function (note, index) {
+        return note.title.toLowerCase() === noteTitle.toLowerCase()
+    }) 
+    return notes[index]
+}
+
+const note = findNote(notes, 'things to pay attention to')
+console.log(note)
