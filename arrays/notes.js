@@ -149,10 +149,17 @@ notes.splice(1, 0, {
 //it has a meaningful return value
 //Note: with findIndex, we return either true or false\
 
+// const findNote = function (notes, noteTitle) {
+//     const index = notes.findIndex(function (note, index) {
+//         return note.title.toLowerCase() === noteTitle.toLowerCase()
+//     }) 
+//     return notes[index]
+// }
+
 const findNote = function (notes, noteTitle) {
     const index = notes.findIndex(function (note, index) {
         return note.title.toLowerCase() === noteTitle.toLowerCase()
-    }) 
+    })
     return notes[index]
 }
 
