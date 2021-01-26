@@ -156,6 +156,9 @@ notes.splice(1, 0, {
 //     return notes[index]
 // }
 
+//in the above method we used findIndex method, there is actually another method in JS MDN that does the
+//same thing and makes it easier for us and that is the find method
+
 const findNote = function (notes, noteTitle) {
     const index = notes.findIndex(function (note, index) {
         return note.title.toLowerCase() === noteTitle.toLowerCase()
