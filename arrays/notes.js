@@ -158,12 +158,16 @@ notes.splice(1, 0, {
 
 //in the above method we used findIndex method, there is actually another method in JS MDN that does the
 //same thing and makes it easier for us and that is the find method
+//Note: the call signature of findIndex method and find method are identical
+//the difference is find does not return the index of the found element just like findIndex rather it
+//find method returns the found elements itself, so converting the above findIndex method to find
+//we have
 
 const findNote = function (notes, noteTitle) {
-    const index = notes.findIndex(function (note, index) {
+    const note = notes.find(function (note, index) {
         return note.title.toLowerCase() === noteTitle.toLowerCase()
     })
-    return notes[index]
+    return note
 }
 
 const note = findNote(notes, 'things to pay attention to')
