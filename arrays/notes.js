@@ -164,11 +164,14 @@ notes.splice(1, 0, {
 //we have
 
 const findNote = function (notes, noteTitle) {
-    const note = notes.find(function (note, index) {
+    return notes.find(function (note, index) {
         return note.title.toLowerCase() === noteTitle.toLowerCase()
     })
-    return note
 }
+//also just like findIndex method, find method returns undefined if the element is not found.
+//If you are looking for an element, use find method
+//If you are looking for the index of a found element, use findIndex method
+//
 
 const note = findNote(notes, 'things to pay attention to')
 console.log(note)
