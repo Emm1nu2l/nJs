@@ -69,8 +69,8 @@ notes.splice(1, 0, {
 
                             // })
 //and as the forEach function is called,
-//the function is called too indirectly.
-//Also we have two arguments (item, index)
+//the function is called too indirectly. Hence forEach has a function as its argument
+//the function passed into forEach has two arguments (item, index)
 //also this grants us access into every item in the array as well as their respective index
 //and this is one of the most commonly used array
 
@@ -137,9 +137,9 @@ notes.splice(1, 0, {
 
 //hence for array of objects, we are going to use 'findIndex' method instead of 'indexOf', because of 
 //flexibility, this findIndex method is related to forEach method which means it is a callback function
-//and its operation will be demonstrated below
+//having a function as its argument and its operation will be demonstrated below
 
-// const index = notes.findIndex(function (note, index) {
+// const index = notes.findIndex(function (note, index) {  //note is the name of the items in the notes
 //     console.log(note)                                    //These code is not reusable
 //     return note.title === 'Things to pay attention to'
 // })

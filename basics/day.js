@@ -1,19 +1,21 @@
-let day = 'Good morning all!'
-console.log(`${day}`)
-day = 'Have a wonderful experience today!!'
-console.log(`${day}`)
+// let day = 'Good morning all!'
+// console.log(`${day}`)
+// day = 'Have a wonderful experience today!!'
+// console.log(`${day}`)
 
-// const notes = [{
-//     title: 'My next goal',
-//     body: 'Finish Javascript Bootcamp before the end of January'
-// }, {
-//     title: 'Habits to work on',
-//     body: 'Bathing before 9am daily'
-// }, {
-//     title: 'Self Development',
-//     body: 'be specific on the areas you wanna focus in, that is your area of specialisation'
-// }]
-// // console.log(notes)
+const notes = [{
+    title: 'My next goal',
+    body: 'Finish Javascript Bootcamp before the end of January'
+}, {
+    title: 'Habits to work on',
+    body: 'Bathing before 9am daily'
+}, {
+    title: 'Self Development',
+    body: 'be specific on the areas you wanna focus in, that is your area of specialisation'
+}]
+// console.log(notes)
+//console.log(notes[2].title)
+console.log(notes[{title: 'Self Development'}])
 
 // notes.splice(1, 0, {
 //     title: 'Things to pay attention to',
@@ -50,20 +52,20 @@ console.log(`${day}`)
 
 //*************************************************
 
-const array1 = [5, 12, 8, 130, 44];
+// const array1 = [5, 12, 8, 130, 44];
 
-const isLargeNumber = (element) => element > 13;
+// const isLargeNumber = (element) => element > 13;
 
-console.log(array1.findIndex(isLargeNumber));
-// expected output: 3
+// console.log(array1.findIndex(isLargeNumber));
+// // expected output: 3
 
-// is equal to
+// // is equal to
 
-var array1 = [5, 12, 8, 130, 44];
+// var array1 = [5, 12, 8, 130, 44];
 
-function findFirstLargeNumber(element) {
-    return element > 13;
-}
+// function findFirstLargeNumber(element) {
+//     return element > 13;
+// }
 
-console.log(array1.findIndex(findFirstLargeNumber));
-// expected output: 3
+// console.log(array1.findIndex(findFirstLargeNumber));
+// // expected output: 3

@@ -78,18 +78,13 @@ console.log(`Yello, you have ${todos.length} todos in your list for today!`)
 // }
 
 const deleteToDo = function (todos, todosText) {
-    todos.find(function (todo, index) {
-        return todo.text === todosText
-        //return index
+    const index = todos.findIndex(function (todo, index) {         //todo is the name of the item in the todos List
+        return todos[index].text === todosText
     })
-    todos.text.indexOf(todosText)
+    todos.splice(index,1)
+
+    
 }
 
-let remTodo = deleteToDo(todos, 'Clean Kitchen')
+const rem = deleteToDo(todos, 'Clean kitchen')
 console.log(todos)
-
-// const deleteToDo = function (todos, todosText) {
-//     return notes.find(function (note, index) {
-//         return note.title.toLowerCase() === noteTitle.toLowerCase()
-//     })
-// }
