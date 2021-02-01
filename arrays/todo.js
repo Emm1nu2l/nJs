@@ -78,11 +78,18 @@ console.log(`Yello, you have ${todos.length} todos in your list for today!`)
 // }
 
 const deleteToDo = function (todos, todosText) {
-    if (todos.text == todosText) {
-        todos.find(function (todo, index) {
-            console.log(index)
-        })
-    }
+    todos.find(function (todo, index) {
+        return todo.text === todosText
+        //return index
+    })
+    todos.text.indexOf(todosText)
 }
+
 let remTodo = deleteToDo(todos, 'Clean Kitchen')
 console.log(todos)
+
+// const deleteToDo = function (todos, todosText) {
+//     return notes.find(function (note, index) {
+//         return note.title.toLowerCase() === noteTitle.toLowerCase()
+//     })
+// }
