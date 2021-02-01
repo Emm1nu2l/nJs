@@ -79,11 +79,24 @@ console.log(`Yello, you have ${todos.length} todos in your list for today!`)
 
 const deleteToDo = function (todos, todosText) {
     const index = todos.findIndex(function (todo, index) {         //todo is the name of the item in the todos List
-        return todos[index].text === todosText
+        return todos[index].text.toLowerCase() === todosText.toLowerCase()
     })
     todos.splice(index,1)
+}
 
-    
+const rem = deleteToDo(todos, 'Clean kitchen')
+console.log(todos)
+
+//**********TUTOR'S SOLUTION */
+
+const deleteToDo = function (todos, todosText) {
+    const index = todos.findIndex(function (todo, index) {         //todo is the name of the item in the todos List
+        return todos.text.toLowerCase() === todosText.toLowerCase()
+    })
+
+    if (index > -1){
+        todos.splice(index, 1)
+    } 
 }
 
 const rem = deleteToDo(todos, 'Clean kitchen')
