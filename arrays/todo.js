@@ -18,10 +18,10 @@
 // const todos = ['Order cat food', 'Clean kitchen', 'Buy food', 'Do work', 'Exercise the body']
 const todos = [{
     text: 'Order cat food',
-    completed: true
+    completed: false
 }, {
     text: 'Clean kitchen',
-    completed: false
+    completed: !false
 }, {
     text: 'Buy food',
     completed: false
@@ -32,7 +32,7 @@ const todos = [{
 
 todos.splice(2, 0, {
     text: 'Do rehearsal or Exercise the body',
-    completed: false
+    completed: true
 })
 // todos.push('Do rehearsals or Watch movies')
 // todos.shift()
@@ -114,8 +114,9 @@ If you need to find if any element satisfies the provided testing function, use 
 
 const getThingsToDo = function (todoList) {
     return todoList.filter(function (todo, index) {
-        const isCompleted = todo.completed.includes(true)
-        return isCompleted
+        return !todo.completed    //since todo.completed is meant to be true
+        //return todo.completed === false
+        //return todo.completed !== true
     })
 }
 
