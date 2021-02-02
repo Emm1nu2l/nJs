@@ -36,7 +36,6 @@ notes.splice(1, 0, {
 
 //Looping over Array,
 
-
 //this means performing a particular action for each of the list in the array
 //for example if we want to start printing out their content, instead of writing the code individually
 //we can just use the 'forEach' method to achieve that, and it will be repeated for all the list in the array
@@ -163,15 +162,43 @@ notes.splice(1, 0, {
 //find method returns the found elements itself, so converting the above findIndex method to find
 //we have
 
-const findNote = function (notes, noteTitle) {
-    return notes.find(function (note, index) {
-        return note.title.toLowerCase() === noteTitle.toLowerCase()
-    })
-}
+// const findNote = function (notes, noteTitle) {
+//     return notes.find(function (note, index) {
+//         return note.title.toLowerCase() === noteTitle.toLowerCase()
+//     })
+// }
 //also just like findIndex method, find method returns undefined if the element is not found.
 //If you are looking for an element, use find method
 //If you are looking for the index of a found element, use findIndex method
 //
 
-const note = findNote(notes, 'things to pay attention to')
-console.log(note)
+// const note = findNote(notes, 'things to pay attention to')
+// console.log(note)
+
+/*****
+ * what happens if we want to edit a note and we don't know the exact title of the item/note and the only thing we can remember
+ * is a word that is included in one of the lines in the note, how do we get that note to edit or delete or maybe in a mailbox, 
+ * in your inbox, you are looking for a mail that has a particular included, how do you get it out, that means we have to filter 
+ * the inbox using that mail in which all the mail having that will be used to create a new array different from the array of the 
+ * the inbox. This concept is called filterate
+ */
+
+// const filteredNotes = notes.filter(function (note, index) {
+//     const isTitleMatch = note.title.toLowerCase().includes('he')
+//     const isBodyMatch = note.body.toLowerCase().includes('he')
+//     return isTitleMatch || isBodyMatch
+// })
+
+// console.log(filteredNotes)
+
+/**the above code is not reusable, so inorder to make it reusable, we need to make it a function */
+
+const findNotes = function (notes, query) {
+    return notes.filter(function (note, index) {
+        const isTitleMatch = note.title.toLowerCase().includes(query.toLowerCase())
+        const isBodyMatch = note.body.toLowerCase().includes(query.toLowerCase())
+        return isTitleMatch || isBodyMatch
+    })
+}
+
+console.log(findNotes(notes, 'HABIT'))

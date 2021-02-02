@@ -77,21 +77,21 @@ console.log(`Yello, you have ${todos.length} todos in your list for today!`)
 //     })
 // }
 
-const deleteToDo = function (todos, todosText) {
-    const index = todos.findIndex(function (todo, index) {         //todo is the name of the item in the todos List
-        return todos[index].text.toLowerCase() === todosText.toLowerCase()
-    })
-    todos.splice(index,1)
-}
+// const deleteToDo = function (todos, todosText) {
+//     const index = todos.findIndex(function (todo, index) {         //todo is the name of the item in the todos List
+//         return todos[index].text.toLowerCase() === todosText.toLowerCase()
+//     })
+//     todos.splice(index,1)
+// }
 
-const rem = deleteToDo(todos, 'Clean kitchen')
-console.log(todos)
+// const rem = deleteToDo(todos, 'Clean kitchen')
+// console.log(todos)
 
 //**********TUTOR'S SOLUTION */
 
 const deleteToDo = function (todos, todosText) {
     const index = todos.findIndex(function (todo, index) {         //todo is the name of the item in the todos List
-        return todos.text.toLowerCase() === todosText.toLowerCase()
+        return todo.text.toLowerCase() === todosText.toLowerCase()
     })
 
     if (index > -1){
@@ -101,3 +101,22 @@ const deleteToDo = function (todos, todosText) {
 
 const rem = deleteToDo(todos, 'Clean kitchen')
 console.log(todos)
+
+
+/****************NOTE THIS
+ * 
+ * If you need the index of the found element in the array, use findIndex().
+If you need to find the index of a value, use Array.prototype.indexOf(). (It’s similar to findIndex(), but checks each element for equality with the value instead of using a testing function.)
+If you need to find if a value exists in an array, use Array.prototype.includes(). Again, it checks each element for equality with the value instead of using a testing function.
+If you need to find if any element satisfies the provided testing function, use Array.prototype.some().
+ * 
+ */
+
+const getThingsToDo = function (todoList) {
+    return todoList.filter(function (todo, index) {
+        const isCompleted = todo.completed.includes(true)
+        return isCompleted
+    })
+}
+
+console.log(getThingsToDo(todos))
