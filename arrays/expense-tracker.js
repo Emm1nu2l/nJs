@@ -29,7 +29,7 @@ const addExpenses = function (expense, amount) {
 const getAccountSummary = function (account) {
     account.expenses.forEach(function (expense, index) {
         const totalExpenses = expense.amount + totalExpenses
-        return totalExpe\nses
+        return totalExpenses
     })
 
     return `${account} has $${totalExpenses} in expenses`
