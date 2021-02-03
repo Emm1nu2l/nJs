@@ -112,6 +112,7 @@ If you need to find if any element satisfies the provided testing function, use 
  * 
  */
 
+ /*********************FILTER TODOLIST/TODOS************** */
 const getThingsToDo = function (todoList) {
     return todoList.filter(function (todo, index) {
         return !todo.completed    //since todo.completed is meant to be true
@@ -121,3 +122,19 @@ const getThingsToDo = function (todoList) {
 }
 
 console.log(getThingsToDo(todos))
+
+/***********************SORTING TODOS******************** */
+const sortToDo = function (todos) {
+    todos.sort(function (a, b) {
+        if (a.completed < b.completed) {
+            return -1
+        } else if (b.completed < a.completed) {
+            return 1
+        } else {
+            return 0
+        }
+    })
+}
+
+sortToDo(todos)
+console.log(todos)

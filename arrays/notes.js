@@ -193,12 +193,44 @@ notes.splice(1, 0, {
 
 /**the above code is not reusable, so inorder to make it reusable, we need to make it a function */
 
-const findNotes = function (notes, query) {
-    return notes.filter(function (note, index) {
-        const isTitleMatch = note.title.toLowerCase().includes(query.toLowerCase())
-        const isBodyMatch = note.body.toLowerCase().includes(query.toLowerCase())
-        return isTitleMatch || isBodyMatch
-    })
-}
+// const findNotes = function (notes, query) {
+//     return notes.filter(function (note, index) {
+//         const isTitleMatch = note.title.toLowerCase().includes(query.toLowerCase())
+//         const isBodyMatch = note.body.toLowerCase().includes(query.toLowerCase())
+//         return isTitleMatch || isBodyMatch
+//     })
+// }
 
-console.log(findNotes(notes, 'HABIT'))
+// console.log(findNotes(notes, 'HABIT'))
+
+/***************************SORTING ARRAY
+ * Assume we want the notes to be arranged in alphabetical order or by titles what shall we do,
+ * this is called sorting. The same thing can be said if we want our completed todo to come first
+ * before the uncompleted ones. Sort method on a norms try to do things on its own like indexOf but
+ * it accepts functions which happen to help in specifying the exact data needed that is it takes a 
+ * CompareFunction,
+ * 
+ * If compareFunction is supplied, all non-undefined array elements are sorted according to the return value of the compare function (all undefined elements are sorted to the end of the array, with no call to compareFunction). If a and b are two elements being compared, then:
+ *
+ * If compareFunction(a, b) returns less than 0, sort a to an index lower than b (i.e. a comes first).
+ * If compareFunction(a, b) returns 0, leave a and b unchanged with respect to each other, but sorted with respect to all different elements. Note: the ECMAScript standard only started guaranteeing this behavior in 2019, thus, older browsers may not respect this.
+ * If compareFunction(a, b) returns greater than 0, leave a and b unchanged. This means b comes first.
+ * compareFunction(a, b) must always return the same value when given a specific pair of elements a and b as its two arguments. If inconsistent results are returned, then the sort order is undefined.
+ * 
+ *  you can check array sort mdn for better explanation 
+ */
+
+ const sortNotes = function (notes) {
+     notes.sort(function (a, b) {
+        if (a.title.toLowerCase() < b.title.toLowerCase()) {
+            return -1
+        } else if (b.title.toLowerCase() < a.title.toLowerCase()) {
+            return 1
+        } else {
+            return 0
+        }
+     })
+ }
+
+ sortNotes(notes)
+ console.log(notes)
