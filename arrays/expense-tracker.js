@@ -1,6 +1,6 @@
 const account = {
     name: 'VICTORY PARISH',
-    expenses: [{
+    expenses: [/*{
         description: 'Coffee at Capital One Cafe',
         amount: 2000
     }, {
@@ -9,7 +9,22 @@ const account = {
     }, {
         description: 'Sunday School Offering',
         amount: 8500000
-    }]
+    }*/],
+    addExpense: function (expense, amount) {
+        account.expenses.push({
+            description: expense,
+            amount: amount
+        })
+    },
+    getAccountSummary: function () {  //you can put the account name as argument, it makes no difference
+        let totalExpenses = 0
+        this.expenses.forEach(function (expense, index) {
+            totalExpenses = expense.amount + totalExpenses
+            return totalExpenses
+        })
+
+        return `${this.name} has $${totalExpenses} in expenses`
+    }
 }
 
 // const addExpenses = function(account, expense, amount) {
@@ -19,20 +34,22 @@ const account = {
 //     })
 // }
 
-const addExpenses = function (expense, amount) {
-    account.push({
-        description: expense,
-        amount: amount
-    })
-}
+// const addExpense = function (expense, amount) {
+//     account.push({
+//         description: expense,
+//         amount: amount
+//     })
+// }
 
-const getAccountSummary = function (account) {
-    account.expenses.forEach(function (expense, index) {
-        const totalExpenses = expense.amount + totalExpenses
-        return totalExpenses
-    })
+// const getAccountSummary = function (account) {
+//     account.expenses.forEach(function (expense, index) {
+//         totalExpenses = expense.amount + totalExpenses
+//         return totalExpenses
+//     })
 
-    return `${account} has $${totalExpenses} in expenses`
-}
+//     return `${account.name} has $${totalExpenses} in expenses`
+// }
 
-console.log(getAccountSummary(account))
+account.addExpense('Rent', 950)
+account.addExpense('Coffee', 2)
+console.log(account.getAccountSummary())
