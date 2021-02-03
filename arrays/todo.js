@@ -124,11 +124,32 @@ const getThingsToDo = function (todoList) {
 console.log(getThingsToDo(todos))
 
 /***********************SORTING TODOS******************** */
+// const sortToDo = function (todos) {
+//     todos.sort(function (a, b) {
+//         if (a.completed < b.completed) {
+//             return -1
+//         } else if (b.completed < a.completed) {
+//             return 1
+//         } else {
+//             return 0
+//         }
+//     })
+// }
+
+// sortToDo(todos)
+// console.log(todos)
+
+/****************TUTOR'S SOLUTION *************
+ * Since the property is in boolean already, so as not to have two boolean result,
+ * you can use this in your if (a.completed === false && b.completed === true) but 
+ * it's the same as the one below if(!a.completed && b.completed)
+*/
+
 const sortToDo = function (todos) {
     todos.sort(function (a, b) {
-        if (a.completed < b.completed) {
+        if (!a.completed && b.completed) {
             return -1
-        } else if (b.completed < a.completed) {
+        } else if (!b.completed && a.completed) {
             return 1
         } else {
             return 0
