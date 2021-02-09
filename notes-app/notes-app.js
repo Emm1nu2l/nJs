@@ -12,6 +12,7 @@
 const ps = document.querySelectorAll('p')
 
 ps.forEach(function(p) {
+    p.textContent = '*********************'
    // p.remove()
-   console.log(p.textContent) //textContent is used to print the content of the html tag/type
+   //console.log(p.textContent) //textContent is used to print the content of the html tag/type
 })
