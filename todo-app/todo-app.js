@@ -1,23 +1,12 @@
-let par = []
-ps = document.querySelectorAll('p')
+let ps = document.querySelectorAll('p')
 
-ps.forEach (function (p, index) {
-    par.push(p)
+ps.forEach(function (p) {
+    let pContent = p.textContent.includes('the') 
+    if(pContent){
+        p.remove()
+    }
 })
-
-console.log(par)
-
-par.filter(function (item) {
-    console.log(item)
-})
-
-// const ps = par.forEach(function (p, index) {
-//    
-//     p.filter(function (p, index) {
-//         console.log(p)
-//     })
-// })
-
+ 
 
 
 
