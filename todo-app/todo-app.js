@@ -15,6 +15,9 @@ const todos = [{
 todos.splice(2, 0, {
     text: 'Do rehearsal or Exercise the body',
     completed: true
+},{
+    text: 'Apply for Gateway Polytechnic Form',
+    completed: false
 })
 
 // let ps = document.querySelectorAll('p')
@@ -35,19 +38,12 @@ const viewUncompletedTodo = document.createElement('p')
 viewUncompletedTodo.textContent = `You have ${uncompletedTodo.length} todo(s) left to complete`
 document.querySelector('body').appendChild(viewUncompletedTodo)
 
-const viewTodo = function (todos) {
-    let toDo = document.createElement('p').textContent
-    todos.find(function (todo, index) {
-        toDo = todo.text
-        //document.querySelector('body').appendChild(toDo)
-        console.log(toDo)
-        //return toDo
-    })
 
-    // for (let i = 0; i <= viewTodo.length; i++) {
-        
-    // }
-}
-
-viewTodo(todos)
+const getTodoTitle = todos.forEach(function(todo, index) {
+    // return todo
+    const addTodo = document.createElement('p')
+    addTodo.textContent = `${index + 1}. ${todo.text}`
+    document.querySelector('body').appendChild(addTodo)
+    //console.log(todo)
+})
 
