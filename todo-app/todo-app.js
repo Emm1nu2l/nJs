@@ -26,15 +26,21 @@ todos.splice(2, 0, {
 //     let pContent = p.textContent.includes('the') 
 //     if(pContent){
 //         p.remove()
-//     }
+//     }      
 // })
+
+//query and remove all paragraphs
+const paragraphs = document.querySelectorAll('p')
+const removeParagraphs = paragraphs.forEach(function (paragraph, index) {
+    paragraph.remove()
+})
 
 const uncompletedTodo = todos.filter(function(todo, index) {
     if(!todo.completed) {
         return todo
     }
 })
-const viewUncompletedTodo = document.createElement('p')
+const viewUncompletedTodo = document.createElement('h3')
 viewUncompletedTodo.textContent = `You have ${uncompletedTodo.length} todo(s) left to complete`
 document.querySelector('body').appendChild(viewUncompletedTodo)
 
@@ -45,5 +51,10 @@ const getTodoTitle = todos.forEach(function(todo, index) {
     addTodo.textContent = `${index + 1}. ${todo.text}`
     document.querySelector('body').appendChild(addTodo)
     //console.log(todo)
+})
+
+document.querySelector('button').addEventListener('click', function (e) {
+    console.log('I\'m adding a new todo')
+    //e.target.textContent = 'I\'m adding a new todo'
 })
 

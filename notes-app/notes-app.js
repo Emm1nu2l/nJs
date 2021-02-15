@@ -41,3 +41,28 @@ ps.forEach(function(p) {
 //To add it to the list we have to use append child method to do that. Append Child adds the new item as the last items to the 
 //element we are appending it  to. In this case it will be the <body>, it can also be <div>, <nav> and so on.
 document.querySelector('body').appendChild(newParagraph)
+
+//Using EventListener
+
+document.querySelector('button').addEventListener('click', function (event) {
+    console.log('Did this work?')
+    /**
+     * Using EventListener gives the access to do something with the element the event was really
+     * fired on, just like the example below
+     */
+    // console.log(event)
+    event.target.textContent = 'The button was clicked'
+})
+
+/**
+ * For instance, i have more than one element and i want to target them how do you that, see below
+ */
+
+ document.querySelectorAll('button')[1].addEventListener('click', function (e) {
+     console.log('delete all notes')
+     e.target.textContent = 'delete all notes'
+ })
+
+ //Note: if the arrangement of the buttons was changed, the program will misbehave, so for this to
+ // to be avoided, let's look at better way of achieving the same result but with the maximum precaution
+ 
