@@ -53,8 +53,15 @@ const getTodoTitle = todos.forEach(function(todo, index) {
     //console.log(todo)
 })
 
-document.querySelector('button').addEventListener('click', function (e) {
+document.querySelector('#add-todo').addEventListener('click', function (e) {
     console.log('I\'m adding a new todo')
     //e.target.textContent = 'I\'m adding a new todo'
+})
+
+document.querySelector('#new-todo').addEventListener('change', function (e) {
+    let newTodo = e.target.value
+    const addTodo = document.createElement('p')
+    addTodo.textContent = `${todos.length + 1}. ${newTodo}`
+    document.querySelector('body').appendChild(addTodo)
 })
 
