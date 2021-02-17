@@ -15,11 +15,10 @@ const todos = [{
 todos.splice(2, 0, {
     text: 'Do rehearsal or Exercise the body',
     completed: true
-},{
+}, {
     text: 'Apply for Gateway Polytechnic Form',
     completed: false
 })
-
 
 // let ps = document.querySelectorAll('p')
 
@@ -36,8 +35,8 @@ todos.splice(2, 0, {
 //     paragraph.remove()
 // })
 
-// const uncompletedTodo = todos.filter(function(todo, index) {
-//     if(!todo.completed) {
+// const uncompletedTodo = todos.filter(function (todo, index) {
+//     if (!todo.completed) {
 //         return todo
 //     }
 // })
@@ -46,60 +45,53 @@ todos.splice(2, 0, {
 // document.querySelector('body').appendChild(viewUncompletedTodo)
 
 
-// const getTodoTitle = todos.forEach(function(todo, index) {
-//     // return todo
-//     const addTodo = document.createElement('p')
-//     addTodo.textContent = `${index + 1}. ${todo.text}`
-//     document.querySelector('body').appendChild(addTodo)
-//     //console.log(todo)
-// })
+const getTodoTitle = todos.forEach(function (todo, index) {
+    // return todo
+    const addTodo = document.createElement('p')
+    addTodo.textContent = `${index + 1}. ${todo.text}`
+    document.querySelector('body').appendChild(addTodo)
+    //console.log(todo)
+})
 
 document.querySelector('#add-todo').addEventListener('click', function (e) {
     console.log('I\'m adding a new todo')
     //e.target.textContent = 'I\'m adding a new todo'
 })
 
-// document.querySelector('#new-todo').addEventListener('change', function (e) {
-//     let newTodo = e.target.value
-//     const addTodo = document.createElement('p')
-//     addTodo.textContent = `${todos.length + 1}. ${newTodo}`
-//     document.querySelector('body').appendChild(addTodo)
-// })
+document.querySelector('#new-todo').addEventListener('change', function (e) {
+    let newTodo = e.target.value
+    const addTodo = document.createElement('p')
+    addTodo.textContent = `${todos.length + 1}. ${newTodo}`
+    document.querySelector('body').appendChild(addTodo)
+})
 
 // 1. Setup a div contain for todos
 // 2. Setup filters (searchText) and wire up a new filter input to change it
 // 3. Create a renderTodos function to render and rerender the latest filtered data
 
-
-const filtered = {
+const filters = {
     searchText: ''
 }
 
-const renderNotes = function (todos, filtered) {
+const renderNotes = function (todos, filters) {
     const filteredNotes = todos.filter(function (todo) {
-        return todo.text.toLowerCase().includes(filtered.searchText.toLowerCase())
-            
+        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
     })
-    //  console.log(filteredNotes)
+
+    // console.log(filteredNotes)
     document.querySelector('#todos').innerHTML = ''
     
-   filteredNotes.forEach(function (todo) {
-       const noteEl = document.createElement('p')
-       noteEl.textContent = todo.text
-       document.querySelector('#todos').appendChild(noteEl)
-   })
+    filteredNotes.forEach(function (todo) {
+        const Ele = document.createElement('p')
+        Ele.textContent = todo.text
+        document.querySelector('#todos').appendChild(Ele)
+
+    })
 }
 
-renderNotes(todos, filtered)
+renderNotes(todos,filters)
 
-
-
-document.querySelector('#filtered').addEventListener('input', function (e) {
-    // console.log(e.target.value)
-    filtered.searchText = e.target.value
-    renderNotes(todos, filtered)
+document.querySelector('#filt-todos').addEventListener('input', function (e) {
+    filters.searchText = e.target.value
+    renderNotes(todos, filters)
 })
-
-
-
-
