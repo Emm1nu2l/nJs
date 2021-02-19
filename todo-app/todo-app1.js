@@ -45,13 +45,13 @@ todos.splice(2, 0, {
 // document.querySelector('body').appendChild(viewUncompletedTodo)
 
 
-const getTodoTitle = todos.forEach(function (todo, index) {
-    // return todo
-    const addTodo = document.createElement('p')
-    addTodo.textContent = `${index + 1}. ${todo.text}`
-    document.querySelector('body').appendChild(addTodo)
-    //console.log(todo)
-})
+// const getTodoTitle = todos.forEach(function (todo, index) {
+//     // return todo
+//     const addTodo = document.createElement('p')
+//     addTodo.textContent = `${index + 1}. ${todo.text}`
+//     document.querySelector('body').appendChild(addTodo)
+//     //console.log(todo)
+// })
 
 document.querySelector('#add-todo').addEventListener('click', function (e) {
     console.log('I\'m adding a new todo')
@@ -80,10 +80,10 @@ const renderNotes = function (todos, filters) {
 
     // console.log(filteredNotes)
     document.querySelector('#todos').innerHTML = ''
-    
-    filteredNotes.forEach(function (todo) {
+
+    filteredNotes.forEach(function (todo, index) {
         const Ele = document.createElement('p')
-        Ele.textContent = todo.text
+        Ele.textContent = `${index + 1}. ${todo.text}`
         document.querySelector('#todos').appendChild(Ele)
 
     })
