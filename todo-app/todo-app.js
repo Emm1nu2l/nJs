@@ -98,43 +98,43 @@ const renderTodos = function (todos, filtered) {
     
     
 
-    const filteredNotes = todos.filter(function (todo) { 
+    const filteredTodos = todos.filter(function (todo) { 
         
         return todo.text.toLowerCase().includes(filtered.searchText.toLowerCase())
     })
-    //  console.log(filteredNotes)
+    //  console.log(filteredTodos)
     document.querySelector('#todos').innerHTML = ''
     
-//    filteredNotes.forEach(function (todo) {
-//        const noteEl = document.createElement('p')
-//        noteEl.textContent = todo.text
+//    filteredTodos.forEach(function (todo) {
+//        const todoEl = document.createElement('p')
+//        todoEl.textContent = todo.text
 //        console.log(filterCompleted)
-//        console.log(noteEl)
-//        document.querySelector('#todos').appendChild(noteEl)
+//        console.log(todoEl)
+//        document.querySelector('#todos').appendChild(todoEl)
 //    })
 
-   filteredNotes.forEach(function(todo, index) {
-       const noteEl = document.createElement('p')
-       noteEl.textContent = todo.text
+   filteredTodos.forEach(function(todo, index) {
+       const todoEl = document.createElement('p')
+       todoEl.textContent = todo.text
       if (filtered.completed || filtered.uncompleted) {
         filterCompleted.forEach(function (todo, index) {
-            if (todo.text == noteEl.textContent) {
-                noteEl.textContent = ''
-                // noteEl.remove()  // it is not working that is why i alter the textContent
+            if (todo.text == todoEl.textContent) {
+                todoEl.textContent = ''
+                // todoEl.remove()  // it is not working that is why i alter the textContent
                 // console.log(todo.text)
             } else {
-                document.querySelector('#todos').appendChild(noteEl)
+                document.querySelector('#todos').appendChild(todoEl)
             }
         })
         filterUncompleted.forEach(function (todo, index) {
-            if (todo.text == noteEl.textContent) {
-                noteEl.textContent = ''
+            if (todo.text == todoEl.textContent) {
+                todoEl.textContent = ''
             } else {
-                document.querySelector('#todos').appendChild(noteEl)
+                document.querySelector('#todos').appendChild(todoEl)
             }
         }) 
       } else {
-          document.querySelector('#todos').appendChild(noteEl)
+          document.querySelector('#todos').appendChild(todoEl)
       }
    })
 }
