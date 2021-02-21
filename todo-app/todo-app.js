@@ -83,7 +83,7 @@ const renderTodos = function (todos, filtered) {
     
     const filterCompleted = todos.filter(function (todo) {
         return todo.completed && filtered.completed
-        // todo.text.remove()
+        // todo.text.remove()  // it is not working
         // if (todo.completed && filtered.completed){
         //     console.log(todo.text)
         // }
@@ -120,6 +120,7 @@ const renderTodos = function (todos, filtered) {
         filterCompleted.forEach(function (todo, index) {
             if (todo.text == noteEl.textContent) {
                 noteEl.textContent = ''
+                // noteEl.remove()  // it is not working that is why i alter the textContent
                 // console.log(todo.text)
             } else {
                 document.querySelector('#todos').appendChild(noteEl)
