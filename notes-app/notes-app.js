@@ -92,13 +92,13 @@ document.querySelector('#create-note').addEventListener('click', function (event
  // html element. see below
  // When using ID, for querySelector, use '#'. You can also use class but you use '.' instead of '#'
 
-document.querySelector('#remove-note').addEventListener('click', function (e) {
-    // console.log('delete all notes')
-    // e.target.textContent = 'delete all notes'
-    document.querySelectorAll('.note').forEach(function (note) {
-        note.remove()
-    })
-})
+// document.querySelector('#remove-note').addEventListener('click', function (e) {
+//     // console.log('delete all notes')
+//     // e.target.textContent = 'delete all notes'
+//     document.querySelectorAll('.note').forEach(function (note) {
+//         note.remove()
+//     })
+// })
 
 // -- Single --
 // p
@@ -129,4 +129,12 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
  * 
  */
 
+document.querySelector('#name-form').addEventListener('submit', function (e) {
+    e.preventDefault()
+    console.log(e.target.elements.firstName.value)
+    e.target.elements.firstName.value = ''
+})
 
+document.querySelector('#for-fun').addEventListener('change', function (e) {
+    console.log(e.target.checked)
+})

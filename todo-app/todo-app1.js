@@ -53,17 +53,17 @@ todos.splice(2, 0, {
 //     //console.log(todo)
 // })
 
-document.querySelector('#add-todo').addEventListener('click', function (e) {
-    console.log('I\'m adding a new todo')
-    //e.target.textContent = 'I\'m adding a new todo'
-})
+// document.querySelector('#add-todo').addEventListener('click', function (e) {
+//     console.log('I\'m adding a new todo')
+//     //e.target.textContent = 'I\'m adding a new todo'
+// })
 
-document.querySelector('#new-todo').addEventListener('change', function (e) {
-    let newTodo = e.target.value
-    const addTodo = document.createElement('p')
-    addTodo.textContent = `${todos.length + 1}. ${newTodo}`
-    document.querySelector('body').appendChild(addTodo)
-})
+// document.querySelector('#new-todo').addEventListener('change', function (e) {
+//     let newTodo = e.target.value
+//     const addTodo = document.createElement('p')
+//     addTodo.textContent = `${todos.length + 1}. ${newTodo}`
+//     document.querySelector('body').appendChild(addTodo)
+// })
 
 // 1. Setup a div contain for todos
 // 2. Setup filters (searchText) and wire up a new filter input to change it
@@ -74,14 +74,21 @@ const filters = {
 }
 
 const renderNotes = function (todos, filters) {
-    const filteredNotes = todos.filter(function (todo) {
+    const filteredTodos = todos.filter(function (todo) {
         return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
     })
 
     // console.log(filteredNotes)
     document.querySelector('#todos').innerHTML = ''
 
-    filteredNotes.forEach(function (todo, index) {
+    const uncompletedTodo = filteredTodos.filter(function (todo, index) {
+        return !todo.completed
+    })
+    const viewUncompletedTodo = document.createElement('h3')
+    viewUncompletedTodo.textContent = `You have ${uncompletedTodo.length} todo(s) left to complete`
+    document.querySelector('#todos').appendChild(viewUncompletedTodo)
+
+    filteredTodos.forEach(function (todo, index) {
         const Ele = document.createElement('p')
         Ele.textContent = `${index + 1}. ${todo.text}`
         document.querySelector('#todos').appendChild(Ele)
@@ -95,3 +102,22 @@ document.querySelector('#filt-todos').addEventListener('input', function (e) {
     filters.searchText = e.target.value
     renderNotes(todos, filters)
 })
+
+/**
+ * 1. Create a form with a single input for todo text
+ * 2. Setup an submit handler and cancel the default action
+ * 3. Add a new item to the todos array with that text data(completed value of false)
+ * 4. Rerender the application
+ * 5. Clear the input field value
+ */
+
+// document.querySelector('#todo-Form').addEventListener('submit', function (e) {
+//     e.preventDefault()
+//     todos.push({
+//         text: e.target.elements.todoText.value,
+//         completed: false
+//     })
+//     e.target.elements.todoText.value = ''
+//     renderNotes(todos, filters)
+
+// })
