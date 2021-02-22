@@ -70,13 +70,32 @@ todos.splice(2, 0, {
 // 3. Create a renderTodos function to render and rerender the latest filtered data
 
 const filters = {
-    searchText: ''
+    searchText: '',
+    completed: false
 }
 
-const renderNotes = function (todos, filters) {
+const renderTodos = function (todos, filters) {
+
+    // let filteredTodos = todos.filter(function (todo) {
+    //     return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+    // })
+
+    // filteredTodos  =filteredTodos.filter(function (todo) {
+    //     return !filters.completed || !todo.completed
+    //     // if (filters.completed) {
+    //     //     return !todo.completed
+    //     // } else {
+    //     //     return true
+    //     // }
+    // })
+
     const filteredTodos = todos.filter(function (todo) {
-        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+        const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+        const completedMatch = !filters.completed || !todo.completed
+
+        return searchTextMatch && completedMatch
     })
+
 
     // console.log(filteredNotes)
     document.querySelector('#todos').innerHTML = ''
@@ -96,11 +115,18 @@ const renderNotes = function (todos, filters) {
     })
 }
 
-renderNotes(todos,filters)
+renderTodos(todos,filters)
 
 document.querySelector('#filt-todos').addEventListener('input', function (e) {
     filters.searchText = e.target.value
-    renderNotes(todos, filters)
+    renderTodos(todos, filters)
+})
+
+document.querySelector('#hide-todos').addEventListener('change', function (e) {
+    filters.completed = e.target.checked
+    renderTodos(todos, filters)
+    // console.log(e)
+    // console.log(e.target.name)
 })
 
 /**
@@ -118,6 +144,6 @@ document.querySelector('#filt-todos').addEventListener('input', function (e) {
 //         completed: false
 //     })
 //     e.target.elements.todoText.value = ''
-//     renderNotes(todos, filters)
+//     renderTodos(todos, filters)
 
 // })
