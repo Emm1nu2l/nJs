@@ -1,24 +1,30 @@
-const todos = [{
-    text: 'Order cat food',
-    completed: false
-}, {
-    text: 'Clean kitchen',
-    completed: !false
-}, {
-    text: 'Buy food',
-    completed: false
-}, {
-    text: 'Do work',
-    completed: true
-}]
+// 1. Delete dummy data
+// 2. Read and parse the data when the app starts up
+// 3. Stringify and write the data when new data is added
 
-todos.splice(2, 0, {
-    text: 'Do rehearsal or Exercise the body',
-    completed: true
-},{
-    text: 'Apply for Gateway Polytechnic Form',
-    completed: false
-})
+let todos = []
+
+// const todos = [{
+//     text: 'Order cat food',
+//     completed: false
+// }, {
+//     text: 'Clean kitchen',
+//     completed: !false
+// }, {
+//     text: 'Buy food',
+//     completed: false
+// }, {
+//     text: 'Do work',
+//     completed: true
+// }]
+
+// todos.splice(2, 0, {
+//     text: 'Do rehearsal or Exercise the body',
+//     completed: true
+// },{
+//     text: 'Apply for Gateway Polytechnic Form',
+//     completed: false
+// })
 
 
 // let ps = document.querySelectorAll('p')
@@ -66,6 +72,20 @@ todos.splice(2, 0, {
 //     document.querySelector('body').appendChild(addTodo)
 // })
 
+ 
+
+document.querySelector('#new-todo').addEventListener('click', function (e) {
+    let newTodo = e.target.value
+    const addTodo = document.createElement('p')
+    addTodo.textContent = `${todos.length + 1}. ${newTodo}`
+    document.querySelector('body').appendChild(addTodo)
+})
+
+document.querySelector('#add-todo').addEventListener('click', function (e) {
+    console.log('I\'m adding a new todo')
+    //e.target.textContent = 'I\'m adding a new todo'
+})
+
 // 1. Setup a div contain for todos
 // 2. Setup filters (searchText) and wire up a new filter input to change it
 // 3. Create a renderTodos function to render and rerender the latest filtered data
@@ -77,6 +97,10 @@ const filtered = {
     uncompleted: false
 }
 
+const todosJSON = localStorage.getItem('todos')
+if (todosJSON !== null) {
+    todos = JSON.parse(todosJSON)
+}
 
         // console.log(hideCompleted)
 const renderTodos = function (todos, filtered) {

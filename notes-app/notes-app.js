@@ -1,18 +1,71 @@
 // DOM - Document Object Model
 
-const notes = [{
-    title: 'My next goal',
-    body: 'Finish Javascript Bootcamp before the end of January'
-}, {
-    title: 'Habits to work on',
-    body: 'Bathing before 9am daily'
-}, {
-    title: 'Self Development',
-    body: 'be specific on the areas you wanna focus in, that is your area of specialisation'
-}]
+// const notes = [{
+//     title: 'My next goal',
+//     body: 'Finish Javascript Bootcamp before the end of January'
+// }, {
+//     title: 'Habits to work on',
+//     body: 'Bathing before 9am daily'
+// }, {
+//     title: 'Self Development',
+//     body: 'be specific on the areas you wanna focus in, that is your area of specialisation'
+// }]
+
+let notes = []
 
 const filters = {
     searchText: ''
+}
+
+/******************************          LOCAL STORAGE INTRO    ****************************/
+
+/**
+ * To work with local data storage you have to be aware of the crud operation (create, read, update and delete)
+ *  We are going to start with the create, to do this, we use localStorage.setItem('key', 'value')
+ */
+//To create
+//   localStorage.setItem('location', 'California')
+ //To read
+//  console.log(localStorage.getItem('location'))
+ //To updatek you are going to use setItem but with different values
+ //To delete
+ //localStorage.removeItem('location')
+ // To clear all the data in localStorage
+//  localStorage.clear()
+//while removeItem works with a key, clear works for all the key hereby removing all their values
+//Note: localStorage only support strings
+
+//Supposing we wanna store an array of object into the data storage, what will happen!!!
+//What we can do is to convert it to strings and later if need be convert the strings back to array
+//So to do that we are gonna use JSON and there are two ways to do that the first is parse and the
+//second is stringify. supposing we have an object user
+// JSON = JavaScript Object Notation
+// const user = {
+//     name: 'Idowu Emmanuel Temiloluwa',
+//     age: 22
+// }
+
+// stringify takes your object or array and return a string
+//the output returns a string, in JSON, you have to use double quotes throughout, avoid single
+// quote except when you are writing objects
+// const userJSON = JSON.stringify(user)
+
+// localStorage.setItem('user', userJSON)
+
+// const viewUser = localStorage.getItem('user')
+// console.log(viewUser)
+//parse method takes a string and return an array.
+// const user = JSON.parse(viewUser)
+// console.log(`${user.name} is now ${user.age}`)
+
+/**********************************   LOCAL STORAGE INTRO ENDS   *************************/
+
+// Check for existing saved data
+
+const notesJSON = localStorage.getItem('notes')
+
+if (notesJSON !== null) {
+    notes = JSON.parse(notesJSON)
 }
 
 const renderNotes = function (notes,filters) {
@@ -26,7 +79,13 @@ const renderNotes = function (notes,filters) {
 
     filteredNotes.forEach(function (note) {
         const noteEl = document.createElement('p')
-        noteEl.textContent = note.title
+
+        if (note.title > 0) {
+            noteEl.textContent = note.title
+        } else {
+            noteEl.textContent = 'Unnamed note'
+        }
+        
         document.querySelector('#notes').appendChild(noteEl)
     })
 }
@@ -67,13 +126,22 @@ document.querySelector('body').appendChild(newParagraph)
 //Using EventListener
 
 document.querySelector('#create-note').addEventListener('click', function (event) {
-    console.log('Did this work?')
+    notes.push({
+        title: '',
+        body: ''
+    })
+    // console.log('Did this work?')
     /**
      * Using EventListener gives the access to do something with the element the event was really
      * fired on, just like the example below
      */
     // console.log(event)
-    event.target.textContent = 'The button was clicked'
+    // event.target.textContent = 'The button was clicked'
+
+    localStorage.setItem('notes', JSON.stringify(notes))
+    renderNotes(notes, filters)
+
+
 })
 
 /**
