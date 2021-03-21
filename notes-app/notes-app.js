@@ -25,9 +25,13 @@ const filters = {
  */
 //To create
 //   localStorage.setItem('location', 'California')
- //To read
+ //To read 
+ //Note: so far there is info in the local database, you don't need the CODE USED FOR CREATING THEM before
+ //       you can read from the database because once the info are stored in the database, they are there 
+ //       temporarily. That's the code under To create above is not needed to read so far it has been run
+ //       once.
 //  console.log(localStorage.getItem('location'))
- //To updatek you are going to use setItem but with different values
+ //To update you are going to use setItem but with different values
  //To delete
  //localStorage.removeItem('location')
  // To clear all the data in localStorage
@@ -36,7 +40,7 @@ const filters = {
 //Note: localStorage only support strings
 
 //Supposing we wanna store an array of object into the data storage, what will happen!!!
-//What we can do is to convert it to strings and later if need be convert the strings back to array
+//What we can do is to convert it to strings and later if need be (i.e needed in array format) convert the strings back to array
 //So to do that we are gonna use JSON and there are two ways to do that the first is parse and the
 //second is stringify. supposing we have an object user
 // JSON = JavaScript Object Notation
@@ -46,7 +50,7 @@ const filters = {
 // }
 
 // stringify takes your object or array and return a string
-//the output returns a string, in JSON, you have to use double quotes throughout, avoid single
+//the output returns a string, in JSON i.e. when you are writing JSON, you have to use double quotes throughout, avoid single
 // quote except when you are writing objects
 // const userJSON = JSON.stringify(user)
 

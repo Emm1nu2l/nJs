@@ -75,7 +75,7 @@ const filters = {
 }
 
 const renderTodos = function (todos, filters) {
-
+ /****************         FILTERING DATA ALONE USING SEARCHTEXT ALONE      *****************/
     // let filteredTodos = todos.filter(function (todo) {
     //     return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
     // })
@@ -88,7 +88,7 @@ const renderTodos = function (todos, filters) {
     //     //     return true
     //     // }
     // })
-
+ /******************************* FILTERING DATA USING BOTH SEARCHTEXT & COMPLETED ************/
     const filteredTodos = todos.filter(function (todo) {
         const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
         const completedMatch = !filters.completed || !todo.completed
@@ -137,13 +137,13 @@ document.querySelector('#hide-todos').addEventListener('change', function (e) {
  * 5. Clear the input field value
  */
 
-// document.querySelector('#todo-Form').addEventListener('submit', function (e) {
-//     e.preventDefault()
-//     todos.push({
-//         text: e.target.elements.todoText.value,
-//         completed: false
-//     })
-//     e.target.elements.todoText.value = ''
-//     renderTodos(todos, filters)
+document.querySelector('#todo-Form').addEventListener('submit', function (e) {
+    e.preventDefault()
+    todos.push({
+        text: e.target.elements.todoText.value,
+        completed: false
+    })
+    e.target.elements.todoText.value = ''
+    renderTodos(todos, filters)
 
-// })
+})

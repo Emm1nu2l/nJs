@@ -5,11 +5,15 @@
     </head>
     <body>
         <h1>Todo List App</h1>
-        <input type="text" id="new-todo" placeholder="Add New Todo">
-        <button id="add-todo">Add Todo</button>
+        <form id="add-todo">
+            <input type="text" placeholder="Add New Todo" name="newTodo">
+            <button>Add Todo</button>
+        </form>
+        
         <input type="text" placeholder="filter todo" id="filtered">
         <div id="todos"></div>
         <!-- <form id="todo-Form">
+            //Note: the value assigned to the property 'name' must obey Javascript variable naming principle
             <input type="text" placeholder="Enter todo text" name="todoText">
             <button>Submit</button>
         </form> -->
