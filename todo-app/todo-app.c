@@ -145,13 +145,11 @@ document.querySelector('#add-todo').addEventListener('submit', function (e) {
     console.log(e.target.elements.newTodo.value.length)
     if (e.target.elements.newTodo.value.length > 0) {
         todos.push({
-            id: uuidv4(),
             text: e.target.elements.newTodo.value,
             completed: false
         })
     } else {
         todos.push({
-            id: uuidv4(),
             text: 'Untitled Note',
             completed: false
         })

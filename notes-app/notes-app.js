@@ -11,7 +11,8 @@
 //     body: 'be specific on the areas you wanna focus in, that is your area of specialisation'
 // }]
 
-let notes = []
+// let notes = []
+const notes = getSavedNotes()
 
 const filters = {
     searchText: ''
@@ -64,36 +65,6 @@ const filters = {
 
 /**********************************   LOCAL STORAGE INTRO ENDS   *************************/
 
-// Check for existing saved data
-
-const notesJSON = localStorage.getItem('notes')
-
-if (notesJSON !== null) {
-    notes = JSON.parse(notesJSON)
-}
-
-const renderNotes = function (notes,filters) {
-    const filteredNotes = notes.filter(function (note) {
-        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
-    })
-
-    // console.log(filteredNotes)
-
-    document.querySelector('#notes').innerHTML = ''
-
-    filteredNotes.forEach(function (note) {
-        const noteEl = document.createElement('p')
-
-        if (note.title > 0) {
-            noteEl.textContent = note.title
-        } else {
-            noteEl.textContent = 'Unnamed note'
-        }
-        
-        document.querySelector('#notes').appendChild(noteEl)
-    })
-}
-
 renderNotes(notes, filters)
 
 // Query and remove
@@ -131,6 +102,7 @@ document.querySelector('body').appendChild(newParagraph)
 
 document.querySelector('#create-note').addEventListener('click', function (event) {
     notes.push({
+        id: uuidv4(),
         title: '',
         body: ''
     })
@@ -142,7 +114,7 @@ document.querySelector('#create-note').addEventListener('click', function (event
     // console.log(event)
     // event.target.textContent = 'The button was clicked'
 
-    localStorage.setItem('notes', JSON.stringify(notes))
+    saveNotes(notes)
     renderNotes(notes, filters)
 
 
@@ -207,9 +179,9 @@ document.querySelector('#name-form').addEventListener('submit', function (e) {
     e.target.elements.firstName.value = ''
 })
 
-document.querySelector('#for-fun').addEventListener('change', function (e) {
-    console.log(e.target.checked)
-})
+// document.querySelector('#for-fun').addEventListener('change', function (e) {
+//     console.log(e.target.checked)
+// })
 
 document.querySelector('#filter-by').addEventListener('change', function (e) {
     console.log(e.target.value)
