@@ -142,7 +142,7 @@ document.querySelector('#filtered').addEventListener('input', function (e) {
 /************************************ ADDING NEW TODO VIA LOCAL STORAGE *************************/ 
 document.querySelector('#add-todo').addEventListener('submit', function (e) {
     e.preventDefault()
-    console.log(e.target.elements.newTodo.value.length)
+    // console.log(e.target.elements.newTodo.value.length)
     if (e.target.elements.newTodo.value.length > 0) {
         todos.push({
             id: uuidv4(),

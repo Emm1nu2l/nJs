@@ -9,6 +9,9 @@ const getSavedTodos = function () {
     }
 }
 
+//1. Wire up button event
+//2. Remove todo by id
+//3. Save and rerender the todos list
 
 // Save todos to localStorage 
 const saveTodos = function (todos) {
@@ -20,6 +23,17 @@ const saveTodos = function (todos) {
 // someNode.setAttribute('type', 'value')
 // 3. Setup and append a span (set text)
 // 4. Setup and append a button (set text)
+
+//Remove a todo from the list
+const removeTodos = function (id) {
+    const todoIndex = todos.findIndex(function (todo) {
+        return todo.id === id
+    })
+
+    if (todoIndex > -1) {
+        todos.splice(todoIndex, 1)
+    }
+}
 
 // Get the DOM elements for an individual note
 const generateTodoDOM = function (todo) {
@@ -43,6 +57,12 @@ const generateTodoDOM = function (todo) {
     // Setup todo remove button
     remButton.textContent = 'x'
     todoEl.appendChild(remButton)
+
+    remButton.addEventListener('click', function () {
+        removeTodos(todo.id)
+        saveTodos(todos)
+        renderTodos(todos, filtered)
+    })
     return todoEl
 }
 
@@ -113,7 +133,7 @@ const renderTodos = function (todos, filtered) {
     /******************************** FILTERING TODOLIST ******************************/
 
    filteredTodos.forEach(function(todo, index) {
-       console.log(generateTodoDOM(todo))
+    //    console.log(generateTodoDOM(todo))
        const todoEl = generateTodoDOM(todo) 
        if (filtered.completed || filtered.uncompleted) {  
            filterCompleted.forEach(function (todo, index) {
